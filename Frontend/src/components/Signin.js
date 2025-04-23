@@ -17,7 +17,8 @@ const Signin = () => {
           console.log("response is", result.data);
           localStorage.setItem("token", result.data);
         });
-      navigate("/dashboard");
+      //  navigate to dashboard if already registered
+      navigate("/setprofile");
     } catch (error) {
       alert("Login failed. Please check your roll number and password.", error);
     }

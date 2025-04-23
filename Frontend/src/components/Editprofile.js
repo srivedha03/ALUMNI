@@ -1,29 +1,24 @@
-import React, { useState,useContext } from 'react';
-import axios from 'axios';
+import React, { useState, useContext } from "react";
+import axios from "axios";
 
-import {Link ,useParams} from 'react-router-dom'
+import { Link, useParams } from "react-router-dom";
 const ProfileEdit = () => {
+  const { profileid } = useParams();
+  console.log(profileid);
 
-  
-
-  const {profileid}=useParams();
-  console.log(profileid)
-  
   const [profile, setProfile] = useState({
-    name: '',
-    image: '',
-    year: '',
-    branch: '',
-    profileid:profileid
+    name: "",
+    image: "",
+    year: "",
+    branch: "",
+    profileid: profileid,
   });
-
- 
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setProfile(prevProfile => ({
+    setProfile((prevProfile) => ({
       ...prevProfile,
-      [name]: value
+      [name]: value,
     }));
   };
 
@@ -32,11 +27,14 @@ const ProfileEdit = () => {
 
     try {
       console.log(profile);
-      const response = await axios.post(`http://localhost:3600/api/editprofile`, profile);
-      console.log('Profile updated:', response.data);
+      const response = await axios.post(
+        `http://localhost:5000/api/editprofile`,
+        profile
+      );
+      console.log("Profile updated:", response.data);
       // Optionally redirect or show success message
     } catch (error) {
-      console.error('Error updating profile:', error);
+      console.error("Error updating profile:", error);
     }
   };
 
@@ -52,7 +50,7 @@ const ProfileEdit = () => {
           onChange={handleChange}
           required
         />
-      
+
         <label>Year:</label>
         <input
           type="number"

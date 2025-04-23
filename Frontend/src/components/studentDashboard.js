@@ -4,10 +4,8 @@ import Allpost from "./Allpost";
 import Setprofile from "./Setprofile";
 import Myupload from "./Myupload";
 import axios from "axios";
-
 import "./Dashboard.css"; // Import the CSS file
-
-const Dashboard = () => {
+const StudentDashboard = () => {
   const [upload, setUpload] = useState(true);
   const [profileData, setProfile] = useState(null);
   const [loading, setLoading] = useState(true); // Loading state
@@ -79,9 +77,6 @@ const Dashboard = () => {
               <button className="dashboard-button" onClick={home}>
                 Home
               </button>
-              <button className="dashboard-button" onClick={uploadHandler}>
-                Upload
-              </button>
               <button className="dashboard-button-logout" onClick={logout}>
                 Logout
               </button>
@@ -99,4 +94,4 @@ const Dashboard = () => {
   );
 };
 
-export default Dashboard;
+export default StudentDashboard;

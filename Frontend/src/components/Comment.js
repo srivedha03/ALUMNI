@@ -1,15 +1,17 @@
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
-import './App.css';
+import React, { useState, useEffect } from "react";
+import axios from "axios";
+import "./App.css";
 
 const App = () => {
   const [post, setPost] = useState(null);
-  const [comment, setComment] = useState('');
-  const postId = '60d21b9667d0d8992e610c85'; // Replace with an actual post ID
+  const [comment, setComment] = useState("");
+  const postId = "60d21b9667d0d8992e610c85"; // Replace with an actual post ID
 
   useEffect(() => {
     const fetchPost = async () => {
-      const response = await axios.get(`http://localhost:3600/api/posts/${postId}`);
+      const response = await axios.get(
+        `http://localhost:5000/api/posts/${postId}`
+      );
       setPost(response.data);
     };
 
@@ -18,13 +20,13 @@ const App = () => {
 
   const handleCommentSubmit = async (e) => {
     e.preventDefault();
-    const response = await axios.post('http://localhost:3600/api/comments', {
+    const response = await axios.post("http://localhost:3600/api/comments", {
       content: comment,
-      author: 'Anonymous', // Replace with actual author name
+      author: "Anonymous", // Replace with actual author name
       postId: postId,
     });
     setPost(response.data);
-    setComment('');
+    setComment("");
   };
 
   return (
